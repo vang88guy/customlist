@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomList\CustomList.csproj">
-      <Project>{2a31e118-04f9-4408-88c7-b7ec559e69ef}</Project>
-      <Name>CustomList</Name>
+    <ProjectReference Include="..\Customlist1\Customlist1.csproj">
+      <Project>{4b6bd551-d143-4786-84a2-46b86ba38d13}</Project>
+      <Name>Customlist1</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
