@@ -21,22 +21,22 @@ namespace Customlist1
 
         public int Count { get { return count; } }
         public int Capacity { get { return capacity; } }
-        public T this[int index] 
-        { 
-            get { 
-                return items[index]; 
-                }
-            set { 
-                items[index] = value; 
-                }
+        public T this[int index]
+        {
+            get {
+                return items[index];
+            }
+            set {
+                items[index] = value;
+            }
         }
-        public IEnumerator GetEnumerator() 
+        public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < count; i++)
             {
                 yield return items[i];
             }
-              
+
         }
 
         public void Add(T item)
@@ -59,7 +59,7 @@ namespace Customlist1
             items[count] = item;
             count++;
         }
-        public void Remove(T item) 
+        public void Remove(T item)
         {
             T[] bucket = new T[count];
             int indexj = 0;
@@ -78,22 +78,50 @@ namespace Customlist1
                     bucket[indexj] = items[i];
                     indexj++;
                 }
-                
+
             }
 
-            
+
 
             items = new T[count];
             for (int j = 0; j < count; j++)
             {
                 items[j] = bucket[j];
             }
-            
+
 
         }
         public override string ToString()
         {
-            return base.ToString();
+            StringBuilder strings = new StringBuilder();
+            string output = "";
+
+            for (int i = 0; i < count; i++)
+            {
+                output = strings.Append(items[i]) + "";
+
+            }
+
+            return output;
+
         }
+
+        public static CustomList <T> operator + (CustomList<T> list, CustomList<T> list2)
+        {
+            CustomList<T> list3 = new CustomList<T>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                list3.Add(list[i]);
+            }
+            for (int j = 0; j < list2.Count; j++)
+            {
+                list3.Add(list2[j]);
+            }
+            return list3;
+        }
+        //public static CustomList<T> operator - (CustomList<T> list, CustomList<T> list2)
+        //{
+
+        //}
     }
 }

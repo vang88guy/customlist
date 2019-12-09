@@ -217,30 +217,246 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
 
         }
-        //[TestMethod]
-        //public void Remove_Item_That_Does_No()
-        //{
-        //    //Arrange
-        //    CustomList<int> list = new CustomList<int>();
-        //    list.Add(1);
-        //    list.Add(2);
-        //    list.Add(3);
-        //    list.Add(4);
-        //    int expected1 = 1;
-        //    int expected2 = 2;
-        //    int expected3 = 3;
-        //    int expected4 = 4;
-        //    //Act
-        //    list.Remove(100);
-        //    int actual1 = list[0];
-        //    int actual2 = list[1];
-        //    int actual3 = list[2];
-        //    int actual4 = list[3];
-        //    //Assert
-        //    Assert.Equals(expected1, actual1);
-        //    Assert.Equals(expected2, actual2);
-        //    Assert.Equals(expected3, actual3);
-        //    Assert.Equals(expected4, actual4);
-        //}
+        [TestMethod]
+        public void ToString_One()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            string expected = "1234";
+            //Act
+            string actual = list.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ToString_One_When_Nothing_Is_In_List()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            
+            string expected = "";
+            //Act
+            string actual = list.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ToString_Count_Check()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            int expected = 4;
+            //Act
+            list.ToString();
+            int actual = list.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        //Plus
+        [TestMethod]
+
+        
+        public void Plus_Count_Goes_Up()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            CustomList<int> list2 = new CustomList<int>();
+            list.Add(6);
+            list.Add(7);
+            list.Add(8);
+
+            int expected = 6;
+            //Act
+            CustomList<int> list3 = new CustomList<int>();
+            list3 = list + list2;
+            int actual = list3.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Plus_In_Action()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            
+            CustomList<int> list2 = new CustomList<int>();
+            list.Add(6);
+            CustomList<int> list3 = new CustomList<int>();
+            list3 = list + list2;
+            
+            int expected2 = 6;
+            //Act
+            
+            int actual2 = list3[1];
+            //Assert
+            
+            Assert.AreEqual(expected2, actual2);
+        }
+        [TestMethod]
+        public void Plus_Capacity_Goes_Up()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() {1, 2, 3, 4 };
+          
+            CustomList<int> list2 = new CustomList<int>() {9 };
+            
+            CustomList<int> list3 = new CustomList<int>();
+            
+            int expected = 8;
+            //Act
+            list3 = list + list2;
+            int actual = list3.Capacity;           
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Plus_Check_Capacity_Stays_The_Same_Before_Need_For_Double()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 2};
+
+            CustomList<int> list2 = new CustomList<int>() {8, 9};
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            int expected = 4;
+            //Act
+            list3 = list + list2;
+            int actual = list3.Capacity;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Plus_Check_For_Order()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 2 };
+
+            CustomList<int> list2 = new CustomList<int>() { 8, 9 };
+
+            CustomList<int> list3 = new CustomList<int>() { };
+
+            string expected = "1289";
+            //Act
+            list3 = list + list2;
+            string actual = list3.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+            
+        }
+        //Minus
+        [TestMethod]
+        public void Minus()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 2 };
+
+            CustomList<int> list2 = new CustomList<int>() { 1 };
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            int expected = 2;
+            //Act
+            list3 = list - list2;
+            int actual = list3[0];
+            
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+            
+        }
+        public void Minus_Count()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 2, 5, 6 };
+
+            CustomList<int> list2 = new CustomList<int>() { 1, 5 };
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            int expected = 2;
+            //Act
+            list3 = list - list2;
+            int actual = list3.Count;
+
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+        public void Minus_Capacity()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 2, 5, 6 };
+
+            CustomList<int> list2 = new CustomList<int>() { 1, 5 };
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            int expected = 4;
+            //Act
+            list3 = list - list2;
+            int actual = list3.Capacity;
+
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+        public void Minus_Check_For_List_Of_Nothing()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() {};
+
+            CustomList<int> list2 = new CustomList<int>() {1};
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            int expected = 0;
+            //Act
+            list3 = list - list2;
+            int actual = list3.Count;
+
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+        public void Minus_Check_For_Multiple()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() {1,5,6,7,1,1,1};
+
+            CustomList<int> list2 = new CustomList<int>() { 1 };
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            int expected = 6;
+            //Act
+            list3 = list - list2;
+            int actual = list3.Count;
+
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
     }
 }
