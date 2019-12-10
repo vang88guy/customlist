@@ -9,12 +9,12 @@ namespace CustomListTest
     [TestClass]
     public class CustomListTest
     {
+
+
+
+
+        //Add method tests
         [TestMethod]
-       
-
-
-//Add method tests
-       
         public void Add_New_Item_To_List()
         {
             //Arrange
@@ -154,7 +154,7 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Remove_Item_IndexOutofrange()
         {
             CustomList<int> list = new CustomList<int>();
@@ -363,7 +363,7 @@ namespace CustomListTest
         }
         //Minus
         [TestMethod]
-        public void Minus()
+        public void Minus_In_Action()
         {
             //Arrange
             CustomList<int> list = new CustomList<int>() { 1, 2 };
@@ -382,6 +382,7 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
             
         }
+        [TestMethod]
         public void Minus_Count()
         {
             //Arrange
@@ -401,6 +402,7 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
 
         }
+        [TestMethod]
         public void Minus_Capacity()
         {
             //Arrange
@@ -420,6 +422,7 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
 
         }
+        [TestMethod]
         public void Minus_Check_For_List_Of_Nothing()
         {
             //Arrange
@@ -439,6 +442,7 @@ namespace CustomListTest
             Assert.AreEqual(expected, actual);
 
         }
+        [TestMethod]
         public void Minus_Check_For_Multiple()
         {
             //Arrange
@@ -456,6 +460,27 @@ namespace CustomListTest
 
             //Assert
             Assert.AreEqual(expected, actual);
+
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Minus_Check_For_ArgumentOutOfRangeException()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 5, 6};
+
+            CustomList<int> list2 = new CustomList<int>() { 1 };
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            //int expected = 0;
+            //Act
+            list3 = list - list2;
+            int actual = list3[2];
+
+
+            //Assert
+            
 
         }
     }

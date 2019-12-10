@@ -23,12 +23,35 @@ namespace Customlist1
         public int Capacity { get { return capacity; } }
         public T this[int index]
         {
-            get {
-                return items[index];
+
+            get
+            {
+                if (index >= 0 && index < count)
+                {
+                    return items[index];
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+
+
+                }
             }
-            set {
-                items[index] = value;
+
+            set
+            {
+                if (index >= 0 && index < count)
+                {
+                    items[index] = value;
+                }
+                else
+                {
+                    
+                    throw new ArgumentOutOfRangeException();
+                }
             }
+
+
         }
         public IEnumerator GetEnumerator()
         {
@@ -106,7 +129,7 @@ namespace Customlist1
 
         }
 
-        public static CustomList <T> operator + (CustomList<T> list, CustomList<T> list2)
+        public static CustomList<T> operator +(CustomList<T> list, CustomList<T> list2)
         {
             CustomList<T> list3 = new CustomList<T>();
             for (int i = 0; i < list.Count; i++)
@@ -119,9 +142,18 @@ namespace Customlist1
             }
             return list3;
         }
-        //public static CustomList<T> operator - (CustomList<T> list, CustomList<T> list2)
-        //{
-
-        //}
+        public static CustomList<T> operator -(CustomList<T> list, CustomList<T> list2)
+        {
+            CustomList<T> list3 = new CustomList<T>();
+            for (int i = 0; i < list2.Count; i++)
+            {
+                list.Remove(list2[i]);
+            }
+            for (int i = 0; i < list.Count; i++)
+            {
+                list3.Add(list[i]);
+            }
+            return list3;
+        }
     }
 }
