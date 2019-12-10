@@ -33,8 +33,6 @@ namespace Customlist1
                 else
                 {
                     throw new ArgumentOutOfRangeException();
-
-
                 }
             }
 
@@ -50,8 +48,6 @@ namespace Customlist1
                     throw new ArgumentOutOfRangeException();
                 }
             }
-
-
         }
         public IEnumerator GetEnumerator()
         {
@@ -59,7 +55,6 @@ namespace Customlist1
             {
                 yield return items[i];
             }
-
         }
 
         public void Add(T item)
@@ -101,11 +96,7 @@ namespace Customlist1
                     bucket[indexj] = items[i];
                     indexj++;
                 }
-
             }
-
-
-
             items = new T[count];
             for (int j = 0; j < count; j++)
             {
@@ -155,10 +146,43 @@ namespace Customlist1
             }
             return list3;
         }
-        
-        public void Zip(CustomList<T> list2) 
-        { 
+
+        public CustomList<T> Zip(CustomList<T> list2)
+        {
             
+            CustomList<T> list3 = new CustomList<T>();
+            int counter;
+            if (count <= list2.Count)
+            {
+                counter = count;
+            }
+            else 
+            {
+                counter = list2.Count;            
+            }
+            
+            for (int i = 0; i < counter; i++)
+            {
+                list3.Add(items[i]);
+                list3.Add(list2[i]);
+            }
+            if (count > counter)
+            {
+                for (int i = count - counter - 1; i < count; i++)
+                {
+                    list3.Add(items[i]);
+                }
+                
+            }
+            if (list2.Count > counter)
+            {
+                for (int i = list2.Count - counter - 1; i < list2.Count; i++)
+                {
+                    list3.Add(list2[i]);
+                }
+            }
+
+            return list3;
         }
     }
 }

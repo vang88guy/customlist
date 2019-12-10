@@ -503,7 +503,7 @@ namespace CustomListTest
 
             int expected = 8;
             //Act
-            list3 = list.Zip(list2);
+            list3= list.Zip(list2);
             int actual = list3.Capacity;
 
             //Assert
@@ -544,7 +544,7 @@ namespace CustomListTest
             
             //Act
             list3 = list.Zip(list2);
-            list3[8];
+            int num =  list3[8];
 
             //Assert
            
