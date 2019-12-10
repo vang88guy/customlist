@@ -155,5 +155,10 @@ namespace Customlist1
             }
             return list3;
         }
+        
+        public void Zip(CustomList<T> list2) 
+        { 
+            
+        }
     }
 }

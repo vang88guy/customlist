@@ -470,5 +470,104 @@ namespace CustomListTest
             
 
         }
+        [TestMethod]
+        
+        public void Zip_Count()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() {1, 3, 5};
+
+            CustomList<int> list2 = new CustomList<int>() {2, 4, 6};
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            int expected = 6;
+            //Act
+            list3 = list.Zip(list2);
+            int actual = list3.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+        [TestMethod]
+
+        public void Zip_Capacity()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 3, 5 };
+
+            CustomList<int> list2 = new CustomList<int>() { 2, 4, 6 };
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            int expected = 8;
+            //Act
+            list3 = list.Zip(list2);
+            int actual = list3.Capacity;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+        [TestMethod]
+
+        public void Zip_In_Order()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 3, 5 };
+
+            CustomList<int> list2 = new CustomList<int>() { 2, 4, 6 };
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            string expected = "123456";
+            //Act
+            list3 = list.Zip(list2);
+            string actual = list3.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Zip_ArgumentOutOfRange()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 3, 5 };
+
+            CustomList<int> list2 = new CustomList<int>() { 2, 4, 6 };
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            
+            //Act
+            list3 = list.Zip(list2);
+            list3[8];
+
+            //Assert
+           
+
+        }
+        [TestMethod]
+        public void Zip_Check_If_All_Numbers_Gets_Zip_When_Two_Different_List_Size_Is_Zip()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 3, 5 };
+
+            CustomList<int> list2 = new CustomList<int>() { 2};
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            string expected = "1235";
+            //Act
+            list3 = list.Zip(list2);
+            string actual = list3.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
     }
 }
