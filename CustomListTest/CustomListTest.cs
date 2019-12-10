@@ -94,18 +94,13 @@ namespace CustomListTest
             list.Add(2);
             list.Add(3);
             list.Add(4);
-            int expected1 = 1;
-            int expected2 = 3;
-            int expected3 = 4;
+            string expected = "134";
             //Act
             list.Remove(2);
-            int actual1 = list[0];
-            int actual2 = list[1];
-            int actual3 = list[2];
+            string actual = list.ToString();
             //Assert
-            Assert.AreEqual(expected1, actual1);
-            Assert.AreEqual(expected2, actual2);
-            Assert.AreEqual(expected3, actual3);
+            Assert.AreEqual(expected, actual);
+         
         }
         [TestMethod]
         public void Remove_Item_Change_Capacity()
@@ -182,21 +177,13 @@ namespace CustomListTest
             list.Add(2);
             list.Add(3);
             list.Add(4);
-            int expected1 = 1;
-            int expected2 = 2;
-            int expected3 = 3;
-            int expected4 = 4;
+            string expected = "1234";
             //Act
             list.Remove(100);
-            int actual1 = list[0];
-            int actual2 = list[1];
-            int actual3 = list[2];
-            int actual4 = list[3];
+            string actual = list.ToString();
             //Assert
-            Assert.AreEqual(expected1, actual1);
-            Assert.AreEqual(expected2, actual2);
-            Assert.AreEqual(expected3, actual3);
-            Assert.AreEqual(expected4, actual4);
+            Assert.AreEqual(expected, actual);
+           
         }
         // count if nothing is removed
         public void Remove_Item_That_Does_Not_Exist_Count_Stays_The_Same()
