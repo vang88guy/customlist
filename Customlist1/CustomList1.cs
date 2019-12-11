@@ -165,20 +165,21 @@ namespace Customlist1
             {
                 list3.Add(items[i]);
                 list3.Add(list2[i]);
+                
             }
             if (count > counter)
             {
-                for (int i = count - counter - 1; i < count; i++)
+                for (int j = counter; j < count; j++)
                 {
-                    list3.Add(items[i]);
+                    list3.Add(items[j]);
                 }
-                
+
             }
-            if (list2.Count > counter)
+            else if (list2.Count > counter)
             {
-                for (int i = list2.Count - counter - 1; i < list2.Count; i++)
+                for (int k = counter; k < list2.Count; k++)
                 {
-                    list3.Add(list2[i]);
+                    list3.Add(list2[k]);
                 }
             }
 

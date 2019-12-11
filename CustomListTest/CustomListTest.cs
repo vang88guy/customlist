@@ -551,16 +551,35 @@ namespace CustomListTest
 
         }
         [TestMethod]
-        public void Zip_Check_If_All_Numbers_Gets_Zip_When_Two_Different_List_Size_Is_Zip()
+        public void Zip_Check_If_All_Numbers_Gets_Zip_When_1st_List_Is_Longer()
         {
             //Arrange
-            CustomList<int> list = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> list = new CustomList<int>() { 1, 4, 5, 6, 7 };
 
-            CustomList<int> list2 = new CustomList<int>() { 2};
+            CustomList<int> list2 = new CustomList<int>() { 2, 3};
 
             CustomList<int> list3 = new CustomList<int>();
 
-            string expected = "1235";
+            string expected = "1243567";
+            //Act
+            list3 = list.Zip(list2);
+            string actual = list3.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+        [TestMethod]
+        public void Zip_Check_If_All_Numbers_Gets_Zip_When_2nd_List_Is_Longer()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>() { 1, 4};
+
+            CustomList<int> list2 = new CustomList<int>() { 2, 3, 5, 6, 7 };
+
+            CustomList<int> list3 = new CustomList<int>();
+
+            string expected = "1243567";
             //Act
             list3 = list.Zip(list2);
             string actual = list3.ToString();
